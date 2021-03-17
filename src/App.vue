@@ -1,11 +1,24 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <!-- <router-link to="/">Home</router-link> | -->
-      <!-- <router-link to="/">Items</router-link> -->
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-main>
+      <add-items />
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss"></style>
+<script lang="ts">
+import Vue from "vue";
+import AddItems from "./views/AddItems.vue";
+
+export default Vue.extend({
+  name: "App",
+
+  components: {
+    AddItems,
+  },
+
+  data: () => ({
+    //
+  }),
+});
+</script>

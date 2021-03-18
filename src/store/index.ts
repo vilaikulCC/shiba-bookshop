@@ -69,7 +69,7 @@ export default new Vuex.Store({
       return state.selectedItem;
     },
     getTotal(state) {
-      return state.selectedItem.reduce((a, b) => a + b.total, 0).toFixed(2);
+      return state.selectedItem.reduce((a, b) => a + b.total, 0);
     },
   },
   modules: {},

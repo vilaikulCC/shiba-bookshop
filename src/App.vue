@@ -1,11 +1,18 @@
 <template>
-  <v-app>
+  <v-app class="bg">
+    <div class="nav">
+      <img src="/imgs/shiba_book.png" alt="" class="nav-logo" />
+      <span>Shiba Book Shop</span>
+    </div>
     <v-main>
       <add-items />
-      <a href="https://www.freepik.com/vectors/baby"
+    </v-main>
+
+    <div class="credit">
+      <a href="https://www.freepik.com/vectors/baby" class="ext-credit"
         >Baby vector created by catalyststuff - www.freepik.com</a
       >
-    </v-main>
+    </div>
   </v-app>
 </template>
 

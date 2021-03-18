@@ -1,14 +1,17 @@
 <template>
   <div class="frame-summary">
-    <h3>Checkout</h3>
+    <h3>Summary</h3>
     <div class="frame-top">
       <div v-for="item in dataSelected" :key="item.detail.id">
         <div class="items-list" :id="`${item.detail.id}`">
-          <p class="book_title">{{ item.detail.title }}</p>
-          <p class="book_qty">X {{ item.qty }}</p>
-          <p class="book_price">
-            {{ item.total }}
-          </p>
+          <img :src="`${item.detail.cover}`" alt="" />
+          <div class="item-desc">
+            <p class="book_title">{{ item.detail.title }}</p>
+            <p class="book_qty">X {{ item.qty }}</p>
+            <p class="book_price">
+              {{ item.total }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -18,8 +21,7 @@
       <div class="txt-total">
         <span>Net </span><span>{{ dataTotal }}</span>
       </div>
-      <span>Cash : </span
-      ><input type="number" v-model="cash" class="inp-change" />
+      <span>Cash : </span>
       <div class="txt-change">
         <span>Change </span><span>{{ cash > 0 ? change : 0 }}</span>
       </div>
@@ -31,7 +33,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 
-@Component<CheckoutList>({
+@Component<CustomerSummary>({
   computed: {
     ...mapGetters({
       dataSelected: "getSelectedItem",
@@ -42,7 +44,7 @@ import { mapGetters } from "vuex";
     },
   },
 })
-export default class CheckoutList extends Vue {
+export default class CustomerSummary extends Vue {
   cash = 0;
   dataTotal!: number;
 }
@@ -54,27 +56,37 @@ export default class CheckoutList extends Vue {
   flex-direction: row;
   margin: 7px 0;
 
-  align-items: center;
-  font-family: "Bai Jamjuree", Helvetica, Arial, sans-serif;
-  .book_title {
-    font-weight: 600;
-    margin: 0;
-    font-size: 0.9rem;
-    flex: 4;
+  img {
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
   }
-  .book_qty {
-    flex: 1;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding-left: 10px;
-    margin: 0;
-  }
-  .book_price {
-    font-weight: 700;
-    margin: 0;
-    color: $primary;
-    flex: 1;
-    text-align: right;
+  .item-desc {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 0 10px;
+    font-family: "Bai Jamjuree", Helvetica, Arial, sans-serif;
+    .book_title {
+      font-weight: 600;
+      margin: 0;
+      font-size: 0.9rem;
+      flex: 4;
+    }
+    .book_qty {
+      flex: 1;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding-left: 10px;
+      margin: 0;
+    }
+    .book_price {
+      font-weight: 700;
+      margin: 0;
+      color: $primary;
+      flex: 1;
+      text-align: right;
+    }
   }
 }
 

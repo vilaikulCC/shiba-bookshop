@@ -3,9 +3,15 @@
 // }
 
 @mixin reset {
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+}
+
+@mixin frame-bg {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px 25px;
+}

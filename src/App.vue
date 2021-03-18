@@ -2,6 +2,9 @@
   <v-app>
     <v-main>
       <add-items />
+      <a href="https://www.freepik.com/vectors/baby"
+        >Baby vector created by catalyststuff - www.freepik.com</a
+      >
     </v-main>
   </v-app>
 </template>

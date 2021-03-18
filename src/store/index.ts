@@ -19,7 +19,6 @@ export default new Vuex.Store({
     setSelectedItem(state, data: SetSelectedItem) {
       const { index, ...other } = data;
       Vue.set(state.selectedItem, index, other);
-      // state.selectedItem[data.index] = other
     },
     pushItem(state, data: SelectedItem) {
       state.selectedItem.push(data);
@@ -39,21 +38,19 @@ export default new Vuex.Store({
         (item) => item.detail.id === data.id
       );
 
-      if (index >= 0) {
+      if (index > -1) {
         const oldData = context.state.selectedItem[index];
-        const qty = oldData.qty + 1;
-        const total = parseFloat(oldData.detail.price) * qty;
+        const newQty = oldData.qty + 1;
+        const newTotal = parseFloat(oldData.detail.price) * newQty;
         const newData = {
-          qty,
-          total,
+          qty: newQty,
+          total: newTotal,
           detail: data,
         };
         context.commit("setSelectedItem", {
           index,
           ...newData,
         });
-        // Vue.set(context.state.selectedItem, index, newData)
-        // context.state.selectedItem[index] = newData
       } else {
         const setData = {
           qty: 1,
@@ -71,13 +68,6 @@ export default new Vuex.Store({
     getSelectedItem(state) {
       return state.selectedItem;
     },
-    // getDiscount(state) {
-    //   const count = state.selectedItem.filter((item) =>
-    //     item.detail.title.startsWith("Harry Potter")
-    //   ).length;
-    //   if (count == 2) {
-    //   }
-    // },
     getTotal(state) {
       return state.selectedItem.reduce((a, b) => a + b.total, 0).toFixed(2);
     },
